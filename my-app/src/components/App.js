@@ -1,12 +1,12 @@
 import React from "react"
-import CountButton from "./CountButton"
+// import CountButton from "./CountButton/CountButton"
+import SearchBar from "./SearchBar/SearchBar"
+
 
 const App = ()=>{
     return(
         <div>
-            <CountButton incrementBy = {1} buttonColor = {"blue"} />
-            <CountButton incrementBy = {7} buttonColor = {"green"} />
-            <CountButton incrementBy = {10} buttonColor = {"purple"} />
+           <SearchBar />
         </div>
     )
 }
