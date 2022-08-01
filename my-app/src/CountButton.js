@@ -8,8 +8,11 @@ const CountButton = (props)=>{
 
 return (
     <div>
-        
+        <button onClick={handleClick}>+{props.incrementBy}</button>
+        <div>{currentCount}</div>
     </div>
 
 )
 }
+
+export default CountButton
