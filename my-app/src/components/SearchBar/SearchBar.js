@@ -1,21 +1,33 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import "./SearchBar.css"
 
-const SearchBar = ()=>{
-    const [searchValue, setSearchValue] = useState("The search value")
-    const handleInputChange = (event)=>{
-setSearchValue(event.target.value)
-    }
-    const handleClearClick = ()=>{
-        setSearchValue("")
-    }
-    const shouldDisplayButton = searchValue.length > 0
-    // console.log(shouldDisplayButton);
 
-    return(
+
+const SearchBar = (props) => {
+    const [searchValue, setSearchValue] = useState("")
+
+    const handleInputChange = (event) => {
+        setSearchValue(event.target.value)
+    };
+    const handleClearClick = () => {
+        setSearchValue("")
+    };
+    const shouldDisplayButton = searchValue.length > 0
+
+    const filteredProducts = props.products.filter((product) => {
+        return product.includes(searchValue)
+    });
+
+    return (
         <div>
             <input className="inputBlock" type="text" value={searchValue} onChange={handleInputChange} />
             {shouldDisplayButton && <button onClick={handleClearClick}>clear</button>}
+
+            <ul>
+                {filteredProducts.map((product) => {
+                    return <li key={product}>{product}</li>
+                })}
+            </ul>
         </div>
     )
 }
